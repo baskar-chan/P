@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>در حال به‌روز‌سازی...</title>
+    <title>www.🤍🤍🤍.com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --pastel-blue: #A7C7E7;
-            --pastel-pink: #FFD1DC;
-            --pastel-lavender: #E6E6FA;
-            --pastel-mint: #C1E1C1;
-            --pastel-peach: #FFDAB9;
+            /* افزایش اشباع رنگ‌ها */
+            --pastel-blue: #8DB8E5;
+            --pastel-pink: #FFB6C1;
+            --pastel-lavender: #D8BFD8;
+            --pastel-mint: #98FB98;
+            --pastel-peach: #FFC8A2;
+            --pastel-yellow: #FFFA70;
+            --pastel-purple: #C9A0FF;
         }
         
         * {
@@ -22,9 +25,18 @@
         }
         
         body {
-            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-lavender), var(--pastel-pink), var(--pastel-mint));
-            background-size: 300% 300%;
-            animation: gradientBG 12s ease infinite;
+            background: linear-gradient(
+                135deg,
+                var(--pastel-blue),
+                var(--pastel-lavender),
+                var(--pastel-pink),
+                var(--pastel-mint),
+                var(--pastel-peach),
+                var(--pastel-yellow),
+                var(--pastel-purple)
+            );
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
             padding: 20px;
             min-height: 100vh;
             color: #333;
@@ -32,12 +44,98 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow: auto;
+            position: relative;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* حباب‌های متحرک با انعکاس رنگی */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 0 15px rgba(255, 255, 255, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.3);
+            animation: bubbleRise linear infinite;
+            opacity: 0.7;
+            filter: blur(1px);
+        }
+        
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 25%;
+            width: 20%;
+            height: 20%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 35%;
+            width: 10%;
+            height: 10%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0) scale(0.8);
+                bottom: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.2);
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+                background-size: 400% 400%;
+            }
+            25% {
+                background-position: 100% 50%;
+                background-size: 300% 300%;
+            }
+            50% {
+                background-position: 50% 100%;
+                background-size: 400% 400%;
+            }
+            75% {
+                background-position: 100% 0%;
+                background-size: 300% 300%;
+            }
+            100% {
+                background-position: 0% 50%;
+                background-size: 400% 400%;
+            }
         }
         
         .container {
@@ -163,6 +261,32 @@
         
         .sticker:hover .sticker-image img {
             transform: scale(1.05);
+        }
+        
+        /* بهبود دکمه علامت سوال */
+        .sticker.question-sticker {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #a1c4fd);
+            background-size: 300% 300%;
+            animation: questionGradient 4s ease infinite;
+        }
+        
+        .sticker.question-sticker .sticker-image i {
+            font-size: 70px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes questionGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
         }
 
         .usage-guide {
@@ -305,6 +429,8 @@
             max-width: 100%;
             max-height: 80vh;
             display: block;
+            pointer-events: none;
+            user-select: none;
         }
         
         .close-modal {
@@ -345,13 +471,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .visitor-counter {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 5px;
-            direction: rtl;
         }
         
         @media (max-width: 900px) {
@@ -401,10 +520,17 @@
                 width: 26px;
                 height: 26px;
             }
+            
+            .sticker.question-sticker .sticker-image i {
+                font-size: 50px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- حباب‌های متحرک در پس‌زمینه -->
+    <div class="bubbles" id="bubblesContainer"></div>
+    
     <div class="container">
         <header>
             <div class="logo">
@@ -414,166 +540,171 @@
         </header>
         
         <div class="sticker-pack">
+            <!-- ردیف اول استیکرها -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/t4xSmMmE/', 'sticker-new.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/YVfFL4Cj/', 'sticker1.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/t4xSmMmE/" alt="استیکر جدید">
+                        <img src="https://abrehamrahi.ir/o/public/YVfFL4Cj/" alt="استیکر 1">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/FZu3ceJj/', 'sticker1.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/2p5JNR7k/', 'sticker2.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/FZu3ceJj/" alt="استیکر 1">
+                        <img src="https://abrehamrahi.ir/o/public/2p5JNR7k/" alt="استیکر 2">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/Iiy0jVid/', 'sticker2.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/3fOJmhTb/', 'sticker3.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/Iiy0jVid/" alt="استیکر 2">
+                        <img src="https://abrehamrahi.ir/o/public/3fOJmhTb/" alt="استیکر 3">
+                    </div>
+                </div>
+                
+                <!-- دکمه علامت سوال بهبود یافته -->
+                <div class="sticker question-sticker" onclick="showInfoModal()">
+                    <div class="sticker-image">
+                        <i class="fas fa-question-circle"></i>
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف دوم استیکرها -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/PxmyLsKx/', 'sticker3.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/tXVJGedL/', 'sticker4.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/PxmyLsKx/" alt="استیکر 3">
+                        <img src="https://abrehamrahi.ir/o/public/tXVJGedL/" alt="استیکر 4">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/kOs196ze/', 'sticker4.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/2p5JNR7k/', 'sticker5.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/kOs196ze/" alt="استیکر 4">
+                        <img src="https://abrehamrahi.ir/o/public/2p5JNR7k/" alt="استیکر 5">
+                    </div>
+                </div>
+                
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/c7WnUJiu/', 'sticker6.png')">
+                    <div class="sticker-image">
+                        <img src="https://abrehamrahi.ir/o/public/c7WnUJiu/" alt="استیکر 6">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف سوم استیکرها -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/odQVjFo6/', 'sticker5.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/jIBeDzDI/', 'sticker7.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/odQVjFo6/" alt="استیکر 5">
-                    </div>
-                </div>
-            </div>
-
-            <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/15QxJXPA/', 'sticker6.png')">
-                    <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/15QxJXPA/" alt="استیکر 6">
+                        <img src="https://abrehamrahi.ir/o/public/jIBeDzDI/" alt="استیکر 7">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/UkYpKDtA/', 'sticker7.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/X1jlsMqO/', 'sticker8.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/UkYpKDtA/" alt="استیکر 7">
+                        <img src="https://abrehamrahi.ir/o/public/X1jlsMqO/" alt="استیکر 8">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/yH605b6G/', 'sticker8.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/yZKFFwW1/', 'sticker9.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/yH605b6G/" alt="استیکر 8">
+                        <img src="https://abrehamrahi.ir/o/public/yZKFFwW1/" alt="استیکر 9">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف چهارم استیکرها -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/rm1QglJB/', 'sticker9.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/s2SwijJu/', 'sticker10.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/rm1QglJB/" alt="استیکر 9">
-                    </div>
-                </div>
-            </div>
-
-            <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/zx91ijDL/', 'sticker10.png')">
-                    <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/zx91ijDL/" alt="استیکر 10">
+                        <img src="https://abrehamrahi.ir/o/public/s2SwijJu/" alt="استیکر 10">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/gPZ69S76/', 'sticker11.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/p6Pvy1zi/', 'sticker11.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/gPZ69S76/" alt="استیکر 11">
+                        <img src="https://abrehamrahi.ir/o/public/p6Pvy1zi/" alt="استیکر 11">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/ZfAZPTIl/', 'sticker12.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/Gqd6Nm7i/', 'sticker12.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/ZfAZPTIl/" alt="استیکر 12">
+                        <img src="https://abrehamrahi.ir/o/public/Gqd6Nm7i/" alt="استیکر 12">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف پنجم: استیکرهای جدید اضافه شده -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/TD1FxOxf/', 'sticker13.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/q3ulTifh/', 'sticker13.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/TD1FxOxf/" alt="استیکر 13">
+                        <img src="https://abrehamrahi.ir/o/public/q3ulTifh/" alt="استیکر 13">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/0UywP1vq/', 'sticker14.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/PeCfqk2k/', 'sticker14.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/0UywP1vq/" alt="استیکر 14">
+                        <img src="https://abrehamrahi.ir/o/public/PeCfqk2k/" alt="استیکر 14">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/JUo87pB5/', 'sticker15.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/oNWpXP7G/', 'sticker15.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/JUo87pB5/" alt="استیکر 15">
+                        <img src="https://abrehamrahi.ir/o/public/oNWpXP7G/" alt="استیکر 15">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف ششم: استیکرهای جدید اضافه شده -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/Gtv2ZiIP/', 'sticker16.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/jV8HjWwo/', 'sticker16.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/Gtv2ZiIP/" alt="استیکر 16">
+                        <img src="https://abrehamrahi.ir/o/public/jV8HjWwo/" alt="استیکر 16">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/H7StupN4/', 'sticker17.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/GcwvlVW7/', 'sticker17.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/H7StupN4/" alt="استیکر 17">
+                        <img src="https://abrehamrahi.ir/o/public/GcwvlVW7/" alt="استیکر 17">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/E7XSRkfI/', 'sticker18.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/lx2A8khN/', 'sticker18.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/E7XSRkfI/" alt="استیکر 18">
+                        <img src="https://abrehamrahi.ir/o/public/lx2A8khN/" alt="استیکر 18">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف هفتم: استیکرهای جدید اضافه شده -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/HsROjbxL/', 'sticker19.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/bwzxMOf8/', 'sticker19.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/HsROjbxL/" alt="استیکر 19">
+                        <img src="https://abrehamrahi.ir/o/public/bwzxMOf8/" alt="استیکر 19">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/V4SJyC80/', 'sticker20.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/g0qhXzk8/', 'sticker20.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/V4SJyC80/" alt="استیکر 20">
+                        <img src="https://abrehamrahi.ir/o/public/g0qhXzk8/" alt="استیکر 20">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/MdNn1Kgy/', 'sticker21.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/SRlWtVGt/', 'sticker21.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/MdNn1Kgy/" alt="استیکر 21">
+                        <img src="https://abrehamrahi.ir/o/public/SRlWtVGt/" alt="استیکر 21">
                     </div>
                 </div>
             </div>
             
+            <!-- ردیف هشتم: استیکرهای جدید اضافه شده -->
             <div class="sticker-row">
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/65Ye8WPF/', 'sticker22.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/cXdQ6m6m/', 'sticker22.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/65Ye8WPF/" alt="استیکر 22">
+                        <img src="https://abrehamrahi.ir/o/public/cXdQ6m6m/" alt="استیکر 22">
                     </div>
                 </div>
                 
-                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/XtEZf5ad/', 'sticker23.png')">
+                <div class="sticker" onclick="downloadSticker('https://abrehamrahi.ir/o/public/CZiGYN7S/', 'sticker23.png')">
                     <div class="sticker-image">
-                        <img src="https://abrehamrahi.ir/o/public/XtEZf5ad/" alt="استیکر 23">
+                        <img src="https://abrehamrahi.ir/o/public/CZiGYN7S/" alt="استیکر 23">
                     </div>
                 </div>
             </div>
@@ -587,7 +718,6 @@
                 <img src="https://abrehamrahi.ir/o/public/Gibf4HXO/" class="webp-animation" alt="انیمیشن">
                 بیا پیش‌مون...
             </button>
-            <div class="visitor-counter" id="visitorCounter">تعداد بازدید: در حال بارگذاری...</div>
         </div>
     </div>
     
@@ -617,9 +747,65 @@
         </div>
     </div>
     
+    <!-- مودال جدید برای نمایش تصویر -->
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeInfoModal()">&times;</span>
+            <img src="https://abrehamrahi.ir/o/public/f3w0YK8n/" alt="اطلاعات" oncontextmenu="return false;" ondragstart="return false;">
+        </div>
+    </div>
+    
     <script>
-        // ایجاد المان صوتی برای افکت دانلود
-        const downloadSound = new Audio('https://abrehamrahi.ir/o/public/m4uiMqby/');
+        // ایجاد حباب‌های متحرک
+        function createBubbles() {
+            const bubblesContainer = document.getElementById('bubblesContainer');
+            const bubbleCount = 20;
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // اندازه تصادفی
+                const size = Math.random() * 40 + 20;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                
+                // موقعیت افقی تصادفی
+                bubble.style.left = `${Math.random() * 100}%`;
+                
+                // تاخیر تصادفی برای حرکت
+                const delay = Math.random() * 15;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                // مدت زمان حرکت تصادفی
+                const duration = Math.random() * 20 + 10;
+                bubble.style.animationDuration = `${duration}s`;
+                
+                // رنگ‌های مختلف
+                const colors = [
+                    'rgba(255, 255, 255, 0.2)',
+                    'rgba(141, 184, 229, 0.2)',
+                    'rgba(255, 182, 193, 0.2)',
+                    'rgba(216, 191, 216, 0.2)',
+                    'rgba(152, 251, 152, 0.2)',
+                    'rgba(255, 200, 162, 0.2)',
+                    'rgba(255, 250, 112, 0.2)',
+                    'rgba(201, 160, 255, 0.2)'
+                ];
+                
+                bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+        
+        // ایجاد یک نمونه صدا برای پیش بارگیری
+        const preloadSound = new Audio('https://abrehamrahi.ir/o/public/HoQTN6b8/');
+        preloadSound.preload = "auto"; // به مرورگر دستور پیش بارگیری می‌دهد
+        preloadSound.load(); // بارگیری را شروع می‌کند
+        
+        // متغیر برای نگهداری نمونه صدا
+        let downloadSound;
         
         document.addEventListener('contextmenu', function(e) {
             if (e.target.closest('.logo')) {
@@ -634,6 +820,13 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
+            createBubbles();
+            
+            // وقتی صدا بارگیری شد، آن را در متغیر ذخیره می‌کنیم
+            preloadSound.addEventListener('loadeddata', function() {
+                downloadSound = preloadSound;
+            });
+            
             const stickerRows = document.querySelectorAll('.sticker-row');
             
             const observer = new IntersectionObserver((entries) => {
@@ -662,28 +855,20 @@
             };
 
             window.addEventListener('load', resizeStickers);
-
-            // Update visitor counter
-            updateVisitorCounter();
         });
 
-        // Simple visitor counter using localStorage
-        function updateVisitorCounter() {
-            let count = localStorage.getItem('siteVisitorCount');
-            
-            if (!count) {
-                count = 0;
-            }
-            
-            count = parseInt(count) + 1;
-            localStorage.setItem('siteVisitorCount', count);
-            
-            document.getElementById('visitorCounter').textContent = `تعداد بازدید: ${count.toLocaleString('fa-IR')}`;
-        }
-
         function downloadSticker(url, filename) {
-            // پخش افکت صوتی هنگام دانلود
-            downloadSound.play().catch(e => console.log("خطا در پخش صدا:", e));
+            // پخش افکت صوتی با کش مرورگر
+            if (downloadSound) {
+                downloadSound.currentTime = 0; // برگشت به ابتدای صدا
+                downloadSound.play().catch(e => console.log("خطا در پخش صدا:", e));
+            }
+            else {
+                // اگر صدا هنوز بارگیری نشده، یک نمونه جدید ایجاد می‌کنیم
+                // (فقط برای اولین بار ممکن است اتفاق بیفتد)
+                downloadSound = new Audio('https://abrehamrahi.ir/o/public/HoQTN6b8/');
+                downloadSound.play().catch(e => console.log("خطا در پخش صدا:", e));
+            }
             
             const link = document.createElement('a');
             link.href = url;
@@ -730,11 +915,29 @@
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+        
+        // توابع جدید برای مودال اطلاعات
+        function showInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
         window.addEventListener('click', function(event) {
-            const modal = document.getElementById('helpModal');
-            if (event.target === modal) {
+            const helpModal = document.getElementById('helpModal');
+            const infoModal = document.getElementById('infoModal');
+            
+            if (event.target === helpModal) {
                 closeHelpModal();
+            }
+            if (event.target === infoModal) {
+                closeInfoModal();
             }
         });
 
@@ -752,4 +955,4 @@
         document.head.appendChild(style);
     </script>
 </body>
-  </html>
+</html>
